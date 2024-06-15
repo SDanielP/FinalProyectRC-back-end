@@ -11,11 +11,14 @@ const { roleCheck } = require('../middlewares/validationRole');
 
 const userRouter = express.Router();
 
-userRouter.get('/', getAllUsers);
-userRouter.post('/', validateToken, roleCheck("ADMIN"), createUser);
-userRouter.get('/:id', validateToken, getUserById);
-userRouter.patch('/:id', updateUser);
-userRouter.delete('/:id', validateToken, deleteUser);
+userRouter.get('/api/users', getAllUsers);
+
+userRouter.post('/api/users', validateToken, roleCheck("ADMIN"),  createUser);
+
+userRouter.get('/api/users/:id', validateToken, getUserById);
+
+userRouter.patch('/api/users/:id', updateUser);
+
+userRouter.delete('/api/users/:id', validateToken, deleteUser);
 
 module.exports = userRouter;
-
