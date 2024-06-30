@@ -19,9 +19,9 @@ router.get('/subcategories/:id', getSubcategoryById, (req, res) => {
 });
 
 // Obtener una subcategoría por nombre
-router.get('/subcategories/name/:name', async (req, res) => {
+router.get('/subcategories/name/:subcategory', async (req, res) => {
     try {
-        const subcategory = await getSubcategoryById({ name: req.params.name });
+        const subcategory = await Subcategory.find({ subcategory: req.params.subcategory });
         if (subcategory === null) {
             return res.status(404).json({ message: 'Subcategoría no encontrada' });
         }
@@ -30,6 +30,21 @@ router.get('/subcategories/name/:name', async (req, res) => {
         res.status(500).json({ message: err.message })
     }
 }), 
+
+// Crear una subcategoría 
+router.post('/subcategories/create', async (req, res) => {
+    try {
+        const { subcategory, value } = req.body;
+        const newSubcategory = new Subcategory({ subcategory, value });
+
+        await newSubcategory.save();
+        res.status(201).json({ message: 'Subcategoría creada exitosamente', subcategory: newSubcategory });
+    } catch (error) {
+        res.status(500).json({ message: 'Error al crear la subcategoría' });
+    }
+});
+
+
 
 
 // Crear una nueva subcategoría

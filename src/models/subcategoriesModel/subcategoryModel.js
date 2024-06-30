@@ -2,12 +2,16 @@
 const mongoose = require('mongoose');
 
 const subcategorySchema = new mongoose.Schema({
-    name: {
-        type: [String],
+    subcategory: {
+        type: String,
+        required: true
+    },
+    value: {
+        type: String,
         required: true
     }
 }, { timestamps: true });
 
-const Subcategory = mongoose.model('men-subcategories', subcategorySchema);
+const Subcategory = mongoose.model('subcategories', subcategorySchema);
 
 module.exports = Subcategory;
