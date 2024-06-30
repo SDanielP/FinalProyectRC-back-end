@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const Subcategory = require('../models/subcategoriesModel/subcategoryModel');
+const Subcategory = require('../models/subcategoryModel');
 const { getSubcategoryById } = require('../middlewares/subcategoryMiddleware');
 
 // Obtener todas las subcategorías

@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const Product = require('../models/productModel/productModel');
+const Product = require('../models/productModel');
 const { getProductById } = require('../middlewares/productMiddleware');
 
 
@@ -15,12 +15,12 @@ router.get('/products', async (req, res) => {
 })
 
 //Obt un prod por ID tiene la verificación en el archivo middleware jiji
-router.get('/products/:id', getProductById, (req, res) => {
+router.get('/products/:category/:subcategory/:id', getProductById, (req, res) => {
     res.json(res.product)
 })
 
 // obt por nombre
-router.get('/products/name/:name', async (req, res) => {
+router.get('/products/:category/:subcategory/:name', async (req, res) => {
     try {
         const product = await getProductById({ name: req.params.name });
         if (product == null) {

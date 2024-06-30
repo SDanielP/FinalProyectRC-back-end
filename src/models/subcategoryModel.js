@@ -8,6 +8,6 @@ const subcategorySchema = new mongoose.Schema({
     }
 }, { timestamps: true });
 
-const Subcategory = mongoose.model('men-subcategories', subcategorySchema);
+const Subcategory = mongoose.model('subcategories', subcategorySchema);
 
 module.exports = Subcategory;
