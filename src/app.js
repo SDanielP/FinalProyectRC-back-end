@@ -11,7 +11,11 @@ const subcategoriesRouter = require('./routes/subcategoryRouter'); // Importa la
 dotenv.config();
 const app = express();
 
-app.use(cors());
+app.use(cors({
+    origin: '*', // Permitir cualquier origen
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    credentials: true
+  }));
 app.use(morgan('combined'));
 app.use(express.json());
 
