@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const Subcategory = require('../models/subcategoriesModel/subcategoryModel');
+const Subcategory = require('../models/subcategoryModel');
 const { getSubcategoryById } = require('../middlewares/subcategoryMiddleware');
 
 // Obtener todas las subcategorías
@@ -19,7 +19,7 @@ router.get('/subcategories/:id', getSubcategoryById, (req, res) => {
 });
 
 // Obtener una subcategoría por nombre
-router.get('/subcategories/name/:subcategory', async (req, res) => {
+router.get('/subcategories/:subcategory', async (req, res) => {
     try {
         const subcategory = await Subcategory.find({ subcategory: req.params.subcategory });
         if (subcategory === null) {

@@ -1,4 +1,4 @@
-const Product = require('../models/productModel/productModel');
+const Product = require('../models/productModel');
 
 async function getProductById(req, res, next) {
     let product;
