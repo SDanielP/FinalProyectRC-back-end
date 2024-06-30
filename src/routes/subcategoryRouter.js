@@ -19,9 +19,9 @@ router.get('/subcategories/:id', getSubcategoryById, (req, res) => {
 });
 
 // Obtener una subcategoría por nombre
-router.get('/subcategories/name/:name', async (req, res) => {
+router.get('/subcategories/:subcategory', async (req, res) => {
     try {
-        const subcategory = await getSubcategoryById({ name: req.params.name });
+        const subcategory = await getSubcategoryById({ subcategory: req.params.subcategory });
         if (subcategory === null) {
             return res.status(404).json({ message: 'Subcategoría no encontrada' });
         }
