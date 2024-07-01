@@ -21,7 +21,6 @@ async function getUserById(req, res) {
 
     const user = await User.findById(id)
     .populate ({
-      path: "pets",
       populate: {
         path: "categories",
         model: "Category"
